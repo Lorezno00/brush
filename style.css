@@ -1,0 +1,402 @@
+@font-face {
+    font-family: 'CoFo gothic';
+    src: url('fonts/CoFoGothic-Regular-Trial.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ===== RESET E LAYOUT PRINCIPALE ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'CoFo gothic', Arial, sans-serif;
+    font-weight: normal;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+/* ===== CONTAINER DEL CANVAS ===== */
+#canvasContainer {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ===== PANNELLO CONTROLLI ===== */
+#controls-panel {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffffff;
+    border-top: 1px solid #000000;
+    box-sizing: border-box;
+    color: #000000;
+    flex-shrink: 0;
+}
+
+/* ===== HEADER PANNELLO ===== */
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: -15px -15px 12px -15px;
+    padding: 15px 15px 8px 15px;
+    border-bottom: 1px solid #000000;
+}
+
+.panel-header h1 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #000000;
+    margin: 0;
+}
+
+.panel-header p {
+    font-size: 15px;
+    font-weight: normal;
+    color: #000000;
+    margin: 0;
+    padding-right: 20px;
+}
+
+/* ===== GRIGLIA CONTROLLI PRINCIPALE ===== */
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-right: 20px;
+}
+
+/* ===== GRUPPI DI CONTROLLI ===== */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-bottom: 12px;
+    margin-right: 8px;
+    position: relative;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+.control-group label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 5px;
+    color: #000000;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== SLIDER ===== */
+input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1px;
+    background: #000000;
+    outline: none;
+    margin: 8px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #000000;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #000000;
+    cursor: pointer;
+    border: none;
+}
+
+/* ===== MENU A TENDINA ===== */
+select {
+    width: 100%;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #000000;
+    font-size: 14px;
+    font-family: 'CoFo gothic', Arial, sans-serif;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+select:focus {
+    border-color: #333;
+}
+
+/* ===== COLOR PICKER ===== */
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: 1px solid #000000;
+    width: 100%;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border: none;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    padding: 0;
+}
+
+input[type="color"]::-moz-color-swatch {
+    border: none;
+}
+
+/* ===== SEZIONE COLORI E BOTTONI ===== */
+.color-and-button-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+    padding-right: 20px;
+}
+
+.color-and-button-section .control-group {
+    margin-right: 8px;
+}
+
+.color-and-button-section .control-group:last-child,
+.color-and-button-section #saveButtonContainer,
+.color-and-button-section #savePNGButtonContainer {
+    margin-right: 0;
+}
+
+/* ===== BOTTONI DI SALVATAGGIO ===== */
+#saveButtonContainer,
+#savePNGButtonContainer {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 12px;
+}
+
+#saveButtonContainer button,
+#savePNGButtonContainer button {
+    width: 100%;
+    height: 32px;
+    padding: 0 12px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'CoFo gothic', Arial, sans-serif;
+    font-weight: normal;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#saveButtonContainer button:hover,
+#savePNGButtonContainer button:hover {
+    background-color: #333;
+}
+
+/* ===== MEDIA QUERIES - RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .controls-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        padding-right: 16px;
+    }
+    
+    .color-and-button-section {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        padding-right: 16px;
+    }
+    
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .panel-header h1 {
+        font-size: 14px;
+    }
+    
+    .panel-header p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 12px;
+    }
+    
+    .controls-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+        padding-right: 12px;
+    }
+    
+    .color-and-button-section {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+        padding-right: 12px;
+    }
+    
+    .control-group {
+        margin-right: 6px;
+    }
+    
+    .control-group:last-child {
+        margin-right: 0;
+    }
+    
+    .color-and-button-section .control-group {
+        margin-right: 6px;
+    }
+    
+    .color-and-button-section .control-group:last-child,
+    .color-and-button-section #saveButtonContainer,
+    .color-and-button-section #savePNGButtonContainer {
+        margin-right: 0;
+    }
+    
+    .control-group label {
+        font-size: 12px;
+    }
+    
+    #controls-panel {
+        padding: 12px;
+    }
+    
+    .panel-header {
+        margin: -12px -12px 12px -12px;
+        padding: 12px 12px 8px 12px;
+    }
+    
+    select {
+        font-size: 12px;
+        height: 28px;
+        padding: 0 6px;
+    }
+    
+    input[type="color"] {
+        height: 28px;
+    }
+    
+    #saveButtonContainer button,
+    #savePNGButtonContainer button {
+        font-size: 12px;
+        height: 28px;
+        padding: 0 8px;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .controls-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding-right: 8px;
+    }
+    
+    .color-and-button-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding-right: 8px;
+    }
+    
+    .control-group {
+        margin-right: 4px;
+    }
+    
+    .control-group:last-child {
+        margin-right: 0;
+    }
+    
+    .color-and-button-section .control-group {
+        margin-right: 4px;
+    }
+    
+    .color-and-button-section .control-group:last-child,
+    .color-and-button-section #saveButtonContainer,
+    .color-and-button-section #savePNGButtonContainer {
+        margin-right: 0;
+    }
+    
+    body {
+        font-size: 11px;
+    }
+    
+    .control-group label {
+        font-size: 11px;
+    }
+    
+    .panel-header h1 {
+        font-size: 12px;
+    }
+    
+    .panel-header p {
+        font-size: 10px;
+    }
+    
+    select {
+        font-size: 11px;
+        height: 26px;
+    }
+    
+    input[type="color"] {
+        height: 26px;
+    }
+    
+    #saveButtonContainer button,
+    #savePNGButtonContainer button {
+        font-size: 11px;
+        height: 26px;
+        padding: 0 6px;
+    }
+}

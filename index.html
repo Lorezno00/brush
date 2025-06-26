@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <title>01 - Brush</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+</head>
+<body>
+    <!-- Container del canvas - occupa tutto lo spazio disponibile -->
+    <div id="canvasContainer"></div>
+        
+    <!-- Pannello controlli fisso in basso -->
+    <div id="controls-panel">
+        <!-- Header con titolo e sottotitolo -->
+        <div class="panel-header">
+            <h1>01 - Brush</h1>
+            <p>Esercitazione 01 del corso informatica di base ISIA</p>
+        </div>
+
+        <!-- Griglia principale dei controlli -->
+        <div class="controls-grid">
+            <div class="control-group">
+                <label>Pennello:</label>
+                <div id="brushContainer"></div>
+            </div>
+
+            <div class="control-group">
+                <label>Opacità Riemp.:</label>
+                <div id="opacContainer"></div>
+            </div>
+                        
+            <div class="control-group">
+                <label>Opacità Contorno:</label>
+                <div id="opacContContainer"></div>
+            </div>
+                        
+            <div class="control-group">
+                <label>Spessore Contr.:</label>
+                <div id="strokeWContainer"></div>
+            </div>
+                        
+            <div class="control-group">
+                <label>Larghezza:</label>
+                <div id="wContainer"></div>
+            </div>
+                        
+            <div class="control-group">
+                <label>Altezza:</label>
+                <div id="hContainer"></div>
+            </div>
+                        
+            <div class="control-group">
+                <label>Altezza triangolo:</label>
+                <div id="hTContainer"></div>
+            </div>
+                                    
+            <div class="control-group">
+                <label>Velocità:</label>
+                <div id="speedContainer"></div>
+            </div>
+
+            <div class="control-group">
+                <label>Distanza orbitale:</label>
+                <div id="distanzaContainer"></div>
+            </div>
+        </div>
+                
+        <!-- Sezione colori e pulsanti di salvataggio -->
+        <div class="color-and-button-section">
+            <div class="control-group">
+                <label>Riempimento:</label>
+                <div id="colorContainer"></div>
+            </div>
+                                    
+            <div class="control-group">
+                <label>Contorno Colore:</label>
+                <div id="contContainer"></div>
+            </div>
+                        
+            <div class="control-group">
+                <label>Background:</label>
+                <div id="backContainer"></div>
+            </div>
+                        
+            <div id="saveButtonContainer"></div>
+            <div id="savePNGButtonContainer"></div>
+        </div>
+    </div>
+
+    <script src="sketch.js"></script>
+</body>
+</html>
